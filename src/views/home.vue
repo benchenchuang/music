@@ -3,15 +3,18 @@
 		<home-header></home-header>
 		<tabs :items='items'></tabs>
 		<router-view></router-view>
+		<footer-nav></footer-nav>
 	</div>
 </template>
 <script>
 	import homeHeader from '../components/home_header'
 	import tabs from '../components/tabs'
+	import footerNav from '../components/footer_nav'
 	export default{
 		components:{
 			homeHeader,
-			tabs
+			tabs,
+			footerNav
 		},
 		data(){
 			return {

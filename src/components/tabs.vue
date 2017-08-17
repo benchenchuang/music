@@ -18,7 +18,6 @@
 	}
 	.tabs ul{
 		display:-moz-box;    
-		-moz-box-orient: horizontal;
 		display:-webkit-box;
 		-webkit-box-orient: horizontal;
 		display:box;
@@ -41,14 +40,12 @@
 		box-flex:1;
 		flex: 1;
 		flex-grow:1;
-		height: 40px;
-		line-height: 40px;
+		height: 38px;
+		line-height: 38px;
+		font-size: 14px;
 		text-align: center;
 		color: #666;
 	}
-
-	
-
 	/*.tabs ul li{
 		float: left;
 		width: 25%;
