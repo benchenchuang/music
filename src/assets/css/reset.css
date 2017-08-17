@@ -1,0 +1,185 @@
+/*浏览器重置*/
+body, h1, h2, h3, h4, h5, h6, hr, p,
+blockquote,
+dl, dt, dd, ul, ol, li,
+pre,
+form, fieldset, legend, button, input,textarea,
+th, td,
+img{
+  border:none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  -webkit-font-smoothing:antialiased;
+  -webkit-text-size-adjust: 100%!important;
+}
+body{
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+body,button, input, select, textarea {
+  font:12px/1.5 "Microsoft Yahei","Helvetica",Helvetica,Arial,"Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight:normal;
+}
+:focus {
+  outline: 0;
+}
+img {
+  width: 100%;
+  border:none;
+  vertical-align:top;
+}
+em,i{
+  font-style: normal
+}
+ul,ol{
+  list-style: none;
+}
+a{
+  color: #666;
+  text-decoration: none;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #c5c5c5;
+}
+table{border-collapse:collapse;}
+textarea{ resize:none; overflow:auto;}
+a,button,input,textarea,select{
+  background: none;
+  -webkit-tap-highlight-color:rgba(255,0,0,0);
+  outline:none;
+  -webkit-appearance:none;
+}
+.v-spinner .v-pulse{
+  width: 10px!important;
+  height: 10px!important;
+  margin:3px 5px!important;
+  background: #d43c33!important;
+}
+.header{
+  width: 100%;
+  height: 44px;
+}
+.header_box{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  border-bottom: 1px solid #f1f1f1;
+  background: #fff;
+  z-index: 99;
+}
+/*icons*/
+@font-face {font-family: "iconfont";
+  src: url('http://at.alicdn.com/t/font_387655_s75khmaz2xi27qfr.eot?t=1502938751317'); /* IE9*/
+  src: url('http://at.alicdn.com/t/font_387655_s75khmaz2xi27qfr.eot?t=1502938751317#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('http://at.alicdn.com/t/font_387655_s75khmaz2xi27qfr.woff?t=1502938751317') format('woff'), /* chrome, firefox */
+  url('http://at.alicdn.com/t/font_387655_s75khmaz2xi27qfr.ttf?t=1502938751317') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('http://at.alicdn.com/t/font_387655_s75khmaz2xi27qfr.svg?t=1502938751317#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size: 16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-mv:before { content: "\e6af"; }
+
+.icon-v:before { content: "\e6a9"; }
+
+.icon-cameravideo:before { content: "\e615"; }
+
+.icon-center:before { content: "\e60a"; }
+
+.icon-share:before { content: "\e7e8"; }
+
+.icon-fm:before { content: "\e6f4"; }
+
+.icon-zhuanji:before { content: "\e89e"; }
+
+.icon-saoyisao:before { content: "\e7c7"; }
+
+.icon-radio:before { content: "\e6b1"; }
+
+.icon-nextvideo:before { content: "\e604"; }
+
+.icon-delete:before { content: "\e710"; }
+
+.icon-ranks:before { content: "\e679"; }
+
+.icon-zan:before { content: "\e643"; }
+
+.icon-right:before { content: "\e621"; }
+
+.icon-tianjiawenjian:before { content: "\e60f"; }
+
+.icon-cancel:before { content: "\e833"; }
+
+.icon-erji:before { content: "\e65f"; }
+
+.icon-logo:before { content: "\e601"; }
+
+.icon-loves:before { content: "\e660"; }
+
+.icon-More:before { content: "\e609"; }
+
+.icon-date:before { content: "\e60e"; }
+
+.icon-pause:before { content: "\e606"; }
+
+.icon-mall:before { content: "\e614"; }
+
+.icon-down:before { content: "\e61a"; }
+
+.icon-play_music:before { content: "\e63f"; }
+
+.icon-about:before { content: "\e6a4"; }
+
+.icon-music_nav:before { content: "\e625"; }
+
+.icon-edit:before { content: "\e641"; }
+
+.icon-liuyan:before { content: "\e626"; }
+
+.icon-prevvideo:before { content: "\e668"; }
+
+.icon-play:before { content: "\e73c"; }
+
+.icon-load:before { content: "\e65b"; }
+
+.icon-me:before { content: "\e605"; }
+
+.icon-del:before { content: "\e6cc"; }
+
+.icon-msg:before { content: "\e622"; }
+
+.icon-friends:before { content: "\e748"; }
+
+.icon-search:before { content: "\e642"; }
+
+.icon-setting:before { content: "\e618"; }
+
+.icon-huiyuan:before { content: "\e8a6"; }
+
+.icon-jifen:before { content: "\e687"; }
+
+.icon-love:before { content: "\e67c"; }
+
+.icon-left:before { content: "\e624"; }
+
+.icon-music:before { content: "\e6f5"; }
+
+.icon-duoxuan:before { content: "\e677"; }
+
+.icon-free:before { content: "\e611"; }
+
