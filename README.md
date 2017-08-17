@@ -2,6 +2,9 @@
 
 > Vue仿网易云音乐app
 
+
+<br/>非常感谢 Binaryify 的关于api的提供 https://binaryify.github.io/NeteaseCloudMusicApi/#/
+
 ## Build Setup
 
 ``` bash
