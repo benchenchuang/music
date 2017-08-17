@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Main from '@/views/main'
 const Home =resolve => require(['@/views/home'],resolve)
+const Recommend=resolve => require(['@/views/recommend'],resolve)
 const RecommendSong=resolve => require(['@/views/song_list'],resolve)
 const RecommendFm=resolve => require(['@/views/recommend_fm'],resolve)
 const RecommendRank=resolve => require(['@/views/ranks'],resolve)
@@ -19,6 +20,11 @@ export default new Router({
       		name:'home',
       		component:Home,
       		children:[
+            {
+              path:'/',
+              name:'recommend',
+              component:Recommend
+            },
       			{
       				path:'/recommend_song',
       				name:'recommend_song',
