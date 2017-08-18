@@ -1,51 +1,41 @@
 <template>
 	<div>
-		<!-- <swiper :options="swiperOption" class='swiper-top'>
-	        <swiper-slide  v-for="cast in detail.casts" :key='1'>
-	        	<router-link :to="{name:'celebrity',params:{id:cast.id}}">
-	        		<img :src="cast.avatars.small">
-	        		<p>{{cast.name}}</p>
-	        	</router-link>
+		<swiper :options="swiperOption" class='swiper'>
+	        <swiper-slide  v-for="item in data" :key='1'>
+	        		<a :href="item.url"><img :src="item.pic"></a>
 	        </swiper-slide>
 	        <div class="swiper-pagination" slot="pagination"></div>
-	     </swiper> -->
-	     tem
+	     </swiper>
 	</div>
 </template>
 <script>
-	import Vue from 'vue'
-	import VueAwesomeSwiper from 'vue-awesome-swiper'
-	Vue.use(VueAwesomeSwiper)
-
+	require('../assets/css/swiper-3.4.2.min.css')
+	import { swiper, swiperSlide } from 'vue-awesome-swiper'
 	export default{
+		props:['data'],
 		components:{
-			// swiper,
-			// swiperSlide
+			swiper,
+			swiperSlide
 		},
 		data(){
 			return{
 				swiperOption: {
 		          pagination: '.swiper-pagination',
-		          slidesPerView: 4,
+		          autoplay: 3000,
+		          slidesPerView: 1,
 		          paginationClickable: true,
-		          spaceBetween: 10,
-		          freeMode: true
+		          spaceBetween: 0
+		          // loop:true
 		        }
-			}
-		},
-		mounted(){
-			this.getSlide();
-		},
-		methods:{
-			getSlide(){
-				console.log()
-				this.$http.get('/api/program/recommend').then(function(response){
-					console.log(response)
-				})
 			}
 		}
 	}
 </script>
 <style>
-	
+	.swiper-pagination{
+		bottom:5px!important;
+	}
+	.swiper-pagination-bullet{
+		background: #fff!important;
+	}
 </style>

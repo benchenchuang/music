@@ -1,7 +1,7 @@
 <template>
 	<div class="tabs">
-		<ul>
-			<router-link tag='li' v-for="item in items" :to="{name:item.name}" :key='0'>{{item.title}}</router-link>
+		<ul class="flex-box">
+			<router-link tag='li' class="flex-item" v-for="item in items" :to="{name:item.name}" :key='0'>{{item.title}}</router-link>
 		</ul>
 	</div>
 </template>
@@ -17,29 +17,17 @@
 		height: 40px;
 	}
 	.tabs ul{
-		display:-moz-box;    
-		display:-webkit-box;
-		-webkit-box-orient: horizontal;
-		display:box;
-		box-orient: horizontal;
-		display: -webkit-box;
-    	display: flex;
 		position: fixed;
 		left: 0;
 		top: 44px;
-		width: 100%;
 		height: 40px;
-		border-bottom: 1px solid #f1f1f1;
+		/*border-bottom: 1px solid #f1f1f1;*/
 		background: #fff;
 		z-index: 99;
 		overflow: hidden;
 	}
 
 	.tabs ul li{
-		-webkit-box-flex: 1;
-		box-flex:1;
-		flex: 1;
-		flex-grow:1;
 		height: 38px;
 		line-height: 38px;
 		font-size: 14px;

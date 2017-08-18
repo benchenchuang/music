@@ -1,7 +1,7 @@
 <template>
 	<div class="header">
 		<div class="header_box">
-			<router-link tag='div' :to="{name:'home'}" class="logo"><img src="../assets/images/logo.png"></router-link>
+			<div class="logo"><img src="../assets/images/logo.png"></div>
 				<div class="search_box">
 					<input type="search" placeholder="搜索音乐、歌词、电台">
 					<i class="iconfont icon-search"></i>

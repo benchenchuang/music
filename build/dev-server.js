@@ -27,6 +27,8 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
   quiet: true
 })
 
+
+
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
   log: false,
   heartbeat: 2000
@@ -78,6 +80,12 @@ devMiddleware.waitUntilValid(() => {
   }
   _resolve()
 })
+
+app.middleware = [
+        proxyMiddleware(['/api'], {target: 'http://118.89.226.181:8080', changeOrigin: true}),
+];
+
+app.use(app.middleware);
 
 var server = app.listen(port)
 

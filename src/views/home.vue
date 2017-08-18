@@ -2,7 +2,7 @@
 	<div>
 		<home-header></home-header>
 		<tabs :items='items'></tabs>
-		<router-view></router-view>
+		<keep-alive><router-view></router-view></keep-alive>
 	</div>
 </template>
 <script>
@@ -19,7 +19,7 @@
 				items:[
 					{
 						title:'个性推荐',
-						name:'home'
+						name:'recommend'
 					},
 					{
 						title:'歌单',

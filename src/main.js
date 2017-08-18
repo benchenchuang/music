@@ -16,13 +16,19 @@ if ('addEventListener' in document) {
   }, false)
 }
 
+import 'vue2-toast/lib/toast.css';
+import Toast from 'vue2-toast';
+Vue.use(Toast);
+
 Vue.use(VueLazyload, {
-  preLoad: 5,
-  error: './assets/images/error.png',
-  loading: './assets/images/loading.png',
-  attempt: 1
+  preLoad: 1.3,
+  error: require('./assets/images/error.png'),
+  loading: require('./assets/images/loading.png'),
+  attempt: 3
 });
 
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+Vue.use(VueAwesomeSwiper)
 
 Vue.use(VueResource);
 Vue.use(Api)

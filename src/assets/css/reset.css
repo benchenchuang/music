@@ -70,24 +70,42 @@ a,button,input,textarea,select{
   left: 0;
   top: 0;
   width: 100%;
+  text-align: center;
   height: 44px;
   line-height: 44px;
   border-bottom: 1px solid #f1f1f1;
   background: #fff;
   z-index: 99;
 }
+.flex-box{
+    display:-moz-box;    
+    display:-webkit-box;
+    -webkit-box-orient: horizontal;
+    display:box;
+    box-orient: horizontal;
+    display: -webkit-box;
+    display: flex;
+    width: 100%;
+}
+.flex-item{
+    -webkit-box-flex: 1;
+    box-flex:1;
+    flex: 1;
+    flex-grow:1;
+  }
 /*icons*/
+
 @font-face {font-family: "iconfont";
-  src: url('http://at.alicdn.com/t/font_387655_s75khmaz2xi27qfr.eot?t=1502938751317'); /* IE9*/
-  src: url('http://at.alicdn.com/t/font_387655_s75khmaz2xi27qfr.eot?t=1502938751317#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('http://at.alicdn.com/t/font_387655_s75khmaz2xi27qfr.woff?t=1502938751317') format('woff'), /* chrome, firefox */
-  url('http://at.alicdn.com/t/font_387655_s75khmaz2xi27qfr.ttf?t=1502938751317') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('http://at.alicdn.com/t/font_387655_s75khmaz2xi27qfr.svg?t=1502938751317#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('http://at.alicdn.com/t/font_387655_us978d397nbz9f6r.eot?t=1503029479458'); /* IE9*/
+  src: url('http://at.alicdn.com/t/font_387655_us978d397nbz9f6r.eot?t=1503029479458#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('http://at.alicdn.com/t/font_387655_us978d397nbz9f6r.woff?t=1503029479458') format('woff'), /* chrome, firefox */
+  url('http://at.alicdn.com/t/font_387655_us978d397nbz9f6r.ttf?t=1503029479458') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('http://at.alicdn.com/t/font_387655_us978d397nbz9f6r.svg?t=1503029479458#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
   font-family:"iconfont" !important;
-  font-size: 16px;
+  font-size:16px;
   font-style:normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -123,9 +141,13 @@ a,button,input,textarea,select{
 
 .icon-tianjiawenjian:before { content: "\e60f"; }
 
+.icon-password:before { content: "\e6aa"; }
+
 .icon-cancel:before { content: "\e833"; }
 
 .icon-erji:before { content: "\e65f"; }
+
+.icon-phone:before { content: "\e623"; }
 
 .icon-logo:before { content: "\e601"; }
 
