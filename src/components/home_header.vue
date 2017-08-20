@@ -2,10 +2,10 @@
 	<div class="header">
 		<div class="header_box">
 			<div class="logo"><img src="../assets/images/logo.png"></div>
-				<div class="search_box">
+				<router-link tag="div" :to="{name:'search'}" class="search_box">
 					<input type="search" placeholder="搜索音乐、歌词、电台">
 					<i class="iconfont icon-search"></i>
-				</div>
+				</router-link>
 			<play-music></play-music>
 		</div>
 	</div>

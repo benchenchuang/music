@@ -61,6 +61,12 @@ a,button,input,textarea,select{
   margin:3px 5px!important;
   background: #d43c33!important;
 }
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
 .header{
   width: 100%;
   height: 44px;
@@ -92,6 +98,16 @@ a,button,input,textarea,select{
     box-flex:1;
     flex: 1;
     flex-grow:1;
+    text-align: center;
+  }
+  .cut_txt{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .v-spinner{
+    text-align: center;
+    margin:15px 0;
   }
 /*icons*/
 

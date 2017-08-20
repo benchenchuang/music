@@ -46,13 +46,13 @@
 				}
 				this.$toast.center('登录中...')
 				this.$http.get('/api/login/cellphone?phone='+this.user_name+'&password='+this.user_pwd).then((response)=>{
-					console.log(response)
-					// if(response.body.code==200){
-					// 	localStorage.setItem('uid', response.body.account.id);
-					// 	window.location.href='/'
-					// }else{
-					// 	this.$toast.center('手机号或密码不正确');
-					// }
+					// console.log(response)
+					if(response.body.code==200){
+						localStorage.setItem('uid', response.body.account.id);
+						window.location.href='/'
+					}else{
+						this.$toast.center('手机号或密码不正确');
+					}
 					
 				})
 			}

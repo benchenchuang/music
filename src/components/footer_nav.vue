@@ -2,8 +2,8 @@
 	<div class="footer">
 		<ul class="flex-box">
 			<router-link tag='li' :to="{name:'home'}" class="flex-item"><i class="iconfont icon-logo"></i><p>发现音乐</p></router-link>
-			<router-link tag='li' :to="{name:'home'}" class="flex-item"><i class="iconfont icon-music_nav"></i><p>我的音乐</p></router-link>
-			<router-link tag='li' :to="{name:'home'}" class="flex-item"><i class="iconfont icon-friends"></i><p>朋友</p></router-link>
+			<router-link tag='li' :to="{name:'music'}" class="flex-item"><i class="iconfont icon-music_nav"></i><p>我的音乐</p></router-link>
+			<router-link tag='li' :to="{name:'friend'}" class="flex-item"><i class="iconfont icon-friends"></i><p>朋友</p></router-link>
 			<router-link tag='li' :to="{name:'mine'}" class="flex-item"><i class="iconfont icon-me"></i><p>我的</p></router-link>
 		</ul>
 	</div>

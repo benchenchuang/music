@@ -22,7 +22,7 @@ Vue.use(Toast);
 
 Vue.use(VueLazyload, {
   preLoad: 1.3,
-  error: require('./assets/images/error.png'),
+  error: require('./assets/images/loading.png'),
   loading: require('./assets/images/loading.png'),
   attempt: 3
 });

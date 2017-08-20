@@ -5,15 +5,15 @@
 		<!-- 私人推荐 -->
 		<recommend-person></recommend-person>
 		<!-- 推荐歌单 -->
-		<recommend-item :title="'推荐歌单'" :data="songList" :count='true' :shape="'music'"></recommend-item>
+		<recommend-item :title="'推荐歌单'" :look='2' :data="songList" :count='true' :shape="'music'"></recommend-item>
 		<!-- 独家放送 -->
-		<recommend-item :title="'独家放送'" :data="exclusive" :count='false'></recommend-item>
+		<recommend-item :title="'独家放送'" :look='1' :data="exclusive" :count='false'></recommend-item>
 		<!-- 最新音乐 -->
-		<recommend-item :title="'最新音乐'" :data="newest" :count='false'></recommend-item>
+		<recommend-item :title="'最新音乐'" :look='3' :data="newest" :count='false'></recommend-item>
 		<!-- 推荐Mv -->
-		<recommend-item :title="'推荐MV'" :data="mv" :count='true' :shape="'mv'"></recommend-item>
+		<recommend-item :title="'推荐MV'" :look='2' :data="mv" :count='true' :shape="'mv'"></recommend-item>
 		<!-- 推荐电台 -->
-		<recommend-item :title="'推荐电台'" :data="radios" :count='false'></recommend-item>
+		<recommend-item :title="'推荐电台'" :look='3' :data="radios" :count='false'></recommend-item>
 
 	</div>
 </template>

@@ -21,7 +21,7 @@
 		left: 0;
 		top: 44px;
 		height: 40px;
-		/*border-bottom: 1px solid #f1f1f1;*/
+		border-bottom: 1px solid #f1f1f1;
 		background: #fff;
 		z-index: 99;
 		overflow: hidden;

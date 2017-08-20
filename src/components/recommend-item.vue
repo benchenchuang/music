@@ -1,25 +1,26 @@
 <template>
-	<div class="recommend-item" v-if="data.length">
-		<h2 class="item-head">{{title}}</h2>
+	<div class="recommend-item" v-if="data">
+		<h2 class="item-head" v-if='title'>{{title}}</h2>
 		<div>
 			<ul>
-				<li :class="{'item-double':data.length==4,'item-third':data.length>=6,exclusive:data.length==3}" v-for="item in data">
+				<li :class="{'item-double':look=='2','item-third':look=='3','exclusive':look=='1'}" v-for="item in data">
 					<div class="pic">
 						<img v-if='item.picUrl' v-lazy="item.picUrl" lazy="loading">
 						<img v-if='item.song' v-lazy="item.song.album.blurPicUrl" lazy="loading">
+						<img v-if='item.coverImgUrl' v-lazy="item.coverImgUrl" lazy="loading">
 						<div class="play_label" v-if='count'>
 							<i class="iconfont" :class="{'icon-erji':shape=='music','icon-cameravideo':shape=='mv'}"></i>
 							<span v-if='item.playCount'>{{item.playCount | getMillons}}</span>
 							<span v-if='item.playcount'>{{item.playcount | getMillons}}</span>
 						</div>
-						<div class="play_author" v-if='author'>
-							<i class="iconfont icon-me"></i>
-							<span>里奥尔</span>
+						<div class="play_author" v-if='category'>
+							<p class="cut_txt">{{item.category}}</p>
 						</div>
 					</div>
 					<p class="desc">{{item.name}}</p>
 					<p class='artist' v-if='item.song'>{{item.song.artists[0].name}}</p>
 					<p class='artist' v-if='item.artistName'>{{item.artistName}}</p>
+					<p class='artist' v-if='item.creator'>by {{item.creator.nickname}}</p>
 				</li>
 			</ul>
 		</div>
@@ -27,7 +28,7 @@
 </template>
 <script>
 	export default{
-		props:['title','data','count','shape','author'],
+		props:['title','data','look','count','shape','category'],
 		data(){
 			return{
 			}
@@ -46,7 +47,7 @@
 	}
 </script>
 <style>
-	.recommend-item{
+	.recommend-item {
 		margin: 16px 0;
 	}
 	.item-head{
@@ -66,6 +67,14 @@
 	}
 	.recommend-item ul li .pic{
 		position: relative;
+	}
+	.item-double .pic img{
+		width: 100%;
+		height: 45vw;
+	}
+	.item-third .pic img{
+		width: 100%;
+		height: 33vw;
 	}
 	.item-third{
 		float: left;
