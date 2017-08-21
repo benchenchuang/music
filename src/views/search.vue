@@ -32,21 +32,36 @@
 			<div class="search_tab">
 				<div class='swiper-head'>
 					<swiper :options="swiperOption" >
-				        <swiper-slide  :class="{on:index==0}"  @click.native="getSingleResource">单曲</swiper-slide>
-				        <swiper-slide  :class="{on:index==1}"  @click.native="getAlbumResource">专辑</swiper-slide>
-				        <swiper-slide  :class="{on:index==2}"  @click.native="getSingerResource">歌手</swiper-slide>
-				        <swiper-slide  :class="{on:index==3}"  @click.native="getPlayListResource">歌单</swiper-slide>
-				        <swiper-slide  :class="{on:index==4}"  @click.native="getUserResource">用户</swiper-slide>
-				        <swiper-slide  :class="{on:index==5}"  @click.native="getMvResource">MV</swiper-slide>
-				        <swiper-slide  :class="{on:index==6}"  @click.native="getDjprograms">电台</swiper-slide>
+				        <swiper-slide :class="{on:index==0}" @click.native="getSingleResource">单曲</swiper-slide>
+				        <swiper-slide :class="{on:index==1}" @click.native="getAlbumResource">专辑</swiper-slide>
+				        <swiper-slide :class="{on:index==2}" @click.native="getSingerResource">歌手</swiper-slide>
+				        <swiper-slide :class="{on:index==3}" @click.native="getPlayListResource">歌单</swiper-slide>
+				        <swiper-slide :class="{on:index==4}" @click.native="getUserResource">用户</swiper-slide>
+				        <swiper-slide :class="{on:index==5}" @click.native="getMvResource">MV</swiper-slide>
+				        <swiper-slide :class="{on:index==6}" @click.native="getDjprograms">电台</swiper-slide>
 				    </swiper>
 				</div>
 			</div>
-			<div v-show="index==0" v-infinite-scroll="getSingleResource" infinite-scroll-distance="100">
-				<single :singles="song" v-for="song in songs" :key='1'></single>
+			<div v-if="index==0">
+				<single :singles="songs"></single>
 			</div>
-			<div v-show="index==1" v-infinite-scroll="getAlbumResource" infinite-scroll-distance="100">
-				<album-list :data="album" v-for="album in albums" :key='2'></album-list>
+			<div v-if="index==1">
+				<album-list :data="albums"></album-list>
+			</div>
+			<div v-if="index==2">
+				<singer-list :data="singers"></singer-list>
+			</div>
+			<div v-if="index==3">
+				<play-list :data="playlists"></play-list>
+			</div>
+			<div v-if="index==4">
+				<user-list :data="users"></user-list>
+			</div>
+			<div v-if="index==5">
+				<mv-list :data="mvs"></mv-list>
+			</div>
+			<div v-if="index==6">
+				<radio-list :data="djs"></radio-list>
 			</div>
 			<loader v-if="is_loading"></loader>
 		</div>
@@ -55,8 +70,13 @@
 </template>
 <script>
 	require('../assets/css/swiper-3.4.2.min.css')
-	import single from '../components/single'
-	import albumList from '../components/album-list'
+	import single from '../components/search/single'
+	import albumList from '../components/search/album-list'
+	import singerList from '../components/search/singer-list'
+	import playList from '../components/search/play-list'
+	import userList from '../components/search/user-list'
+	import radioList from '../components/search/radio-list'
+	import mvList from '../components/search/mv-list'
 	import Vue from 'vue';
 	  //滚动
 	import infiniteScroll from 'vue-infinite-scroll'
@@ -69,7 +89,12 @@
 			single,
 			albumList,
 			swiper,
-			swiperSlide
+			swiperSlide,
+			singerList,
+			playList,
+			userList,
+			radioList,
+			mvList
 		},
 		data(){
 			return{
@@ -85,16 +110,9 @@
 				mvs:[],
 				djs:[],
 				index:0,
-				start1:0,
-				start2:0,
-				start3:0,
-				start4:0,
-				start5:0,
-				start6:0,
-				start7:0,
 				swiperOption: {
 		          pagination: '.swiper-pagination',
-		          slidesPerView: 4.5,
+		          slidesPerView: 4.7,
 		          paginationClickable: true,
 		          spaceBetween: 20
 		        },
@@ -109,7 +127,7 @@
 		    }
 		 },
 		 created(){
-		 	// this.goSearch(this.keywords);
+		 	this.goSearch(this.keywords);
 		 },
 		 methods:{
 			goBack(){
@@ -156,48 +174,28 @@
 					// console.log(this.suggest)
 				})
 			},
-			 initSearchList () {
-			 	this.songs=[];
-				this.albums=[];
-				this.singers=[];
-				this.playlists=[];
-				this.users=[];
-				this.mvs=[];
-				this.djs=[];
-		        this.getSingleResource(); //  获取搜索单曲
-		        this.getAlbumResource(); //  获取搜索专辑
-		        this.getSingerResource(); //  获取搜索歌手
-		        this.getPlayListResource(); //  获取搜索歌单
-		        this.getUserResource(); //  获取搜索用户
-		        this.getMvResource(); // 获取搜索MV
-		        this.getDjprograms();//获取电台
-		     },
 		     getSingleResource(){
 		     	this.index=0;
 		     	this.is_loading=true;
-		     	this.$http.get('/api/search?keywords='+this.keywords+'&type=1&offset='+this.start1).then((response)=>{
-		     		this.songs.push(response.body.result.songs);
-		     		this.start1+=1;
+		     	this.$http.get('/api/search?keywords='+this.keywords+'&type=1&offset=0').then((response)=>{
+		     		this.songs=response.body.result.songs;
 		     		this.is_loading=false;
 		     	})
 		     },
 		     getAlbumResource(){
 		     	this.index=1;
 		     	this.is_loading=true;
-		     	this.$http.get('/api/search?keywords='+this.keywords+'&type=10&offset='+this.start2).then((response)=>{
-		     		this.albums.push(response.body.result.albums);
-		     		this.start2+=1;
+		     	this.$http.get('/api/search?keywords='+this.keywords+'&type=10&offset=0').then((response)=>{
+		     		this.albums=response.body.result.albums;
 		     		this.is_loading=false;
-		     		console.log(response)
 		     	})
 		     },
 		     getSingerResource(){
 		     	this.index=2;
 		     	this.is_loading=true;
 		     	this.$http.get('/api/search?keywords='+this.keywords+'&type=100').then((response)=>{
-		     		this.singers=response.body.result.singers;
+		     		this.singers=response.body.result.artists;
 		     		this.is_loading=false;
-		     		console.log(response.body)
 		     	})
 		     },
 		     getPlayListResource(){

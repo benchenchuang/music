@@ -89,7 +89,7 @@
 				})
 			},
 			getLabel(){
-				this.$http.get('/api/daily_signin').then((response)=>{
+				this.$http.get('/api/daily_signin?type=1').then((response)=>{
 					this.user.pcSign=true;
 					this.$toast.center('签到成功 +2');
 				})

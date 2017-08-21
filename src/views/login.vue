@@ -31,7 +31,6 @@
 		},
 		methods:{
 			getLogin(){
-				localStorage.setItem('uid', 123);
 				var patten=/^1[3|5|7|8|]\d{9}/;
 				try{
 					if(!patten.test(this.user_name)){
@@ -49,7 +48,7 @@
 					// console.log(response)
 					if(response.body.code==200){
 						localStorage.setItem('uid', response.body.account.id);
-						window.location.href='/'
+						window.location.href='/mine'
 					}else{
 						this.$toast.center('手机号或密码不正确');
 					}

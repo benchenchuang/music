@@ -1,33 +1,31 @@
 <template>
 	<div>
 		<div class="single" v-for="item in data">
-			<div class="avatar"><img v-lazy="item.picUrl"></div>
+			<div class="avatar"><img v-lazy="item.avatarUrl"></div>
 			<div class="desc">
-				<h3>{{item.name}}</h3>
-				<p>{{item.artists[0].name}} - {{item.publishTime | getDate}}</p>
+				<h3>{{item.nickname}}</h3>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
 	export default{
-		props:['data'],
-		filters:{
-			getDate(value){
-				var getTimes=new Date(value);
-				return getTimes.getFullYear()+'-'+(getTimes.getMonth()+1)+'-'+getTimes.getDate()
-			}
-		}
+		props:['data']
 	}
 </script>
 <style scoped>
 	.single{
 		overflow: hidden;
 		margin-top: 5px;
+		padding:0 10px;
 	}
 	.avatar{
 		float: left;
-		width: 70px;
+		width: 50px;
+		height: 70px;
+	}
+	.avatar img{
+		border-radius: 50%;
 	}
 	.desc{
 		padding:5px 0;
@@ -37,6 +35,7 @@
 		border-bottom: 1px solid #f1f1f1;
 	}
 	.desc h3{
+		margin-top: 10px;
 		font-size: 16px;
 		color: #474747;
 	}
