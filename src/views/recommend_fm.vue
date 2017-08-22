@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<keep-alive><recommend-item :title="'精选电台'" :look='3' :data="recommends" :count='false' :category="true"></recommend-item></keep-alive>
+		<keep-alive><dj-list :title="'精选电台'" :data="recommends" :category="true"></dj-list></keep-alive>
 		<div class="fm_category">
 			<h2 class="item-head" v-if="categories.length">电台分类</h2>
 			<ul>
@@ -14,10 +14,10 @@
 	</div>
 </template>
 <script>
-	import recommendItem from '../components/recommend-item'
+	import djList from '../components/recommend/dj_list.vue'
 	export default{
 		components:{
-			recommendItem
+      djList
 		},
 		data(){
 			return{

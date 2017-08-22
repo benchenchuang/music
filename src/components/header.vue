@@ -1,6 +1,6 @@
 <template>
 	<div class="header_wrap">
-		<div class="header_box">
+		<div class="header_box" :class="{'unbg':bg}">
 			<i v-if='back' @click='goBack()' class="iconfont icon-left"></i>
 			<h3>{{title}}</h3>
 			<!-- 是否需要显示播放 -->
@@ -10,7 +10,7 @@
 </template>
 <script>
 	export default{
-		props:['title','play','back'],
+		props:['title','play','back','bg'],
 		methods:{
 			goBack(){
 				window.history.back();
@@ -41,4 +41,12 @@
 		font-size: 16px;
 		color: #333;
 	}
+  .header_box.unbg{
+    background: none;
+    border-bottom: none;
+  }
+  .header_box.unbg i,
+  .header_box.unbg h3{
+    color: #fff;
+  }
 </style>

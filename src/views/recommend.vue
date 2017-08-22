@@ -5,27 +5,35 @@
 		<!-- 私人推荐 -->
 		<recommend-person></recommend-person>
 		<!-- 推荐歌单 -->
-		<recommend-item :title="'推荐歌单'" :look='2' :data="songList" :count='true' :shape="'music'"></recommend-item>
+		<play-list :title="'推荐歌单'" :type="'playlist'" :look="3" :data="songList" :count="true"></play-list>
 		<!-- 独家放送 -->
-		<recommend-item :title="'独家放送'" :look='1' :data="exclusive" :count='false'></recommend-item>
+		<only-list :title="'独家放送'" :data="exclusive"></only-list>
 		<!-- 最新音乐 -->
-		<recommend-item :title="'最新音乐'" :look='3' :data="newest" :count='false'></recommend-item>
+		<new-list :title="'最新音乐'" :type="'album'" :data="newest"></new-list>
 		<!-- 推荐Mv -->
-		<recommend-item :title="'推荐MV'" :look='2' :data="mv" :count='true' :shape="'mv'"></recommend-item>
+		<mv-list :title="'推荐MV'" :data="mv"></mv-list>
 		<!-- 推荐电台 -->
-		<recommend-item :title="'推荐电台'" :look='3' :data="radios" :count='false'></recommend-item>
+		<dj-list :title="'推荐电台'" :data="radios"></dj-list>
 
 	</div>
 </template>
 <script>
 	import slideBar from '../components/slide'
 	import recommendPerson from '../components/recommend-person'
-	import recommendItem from '../components/recommend-item'
+	import playList from '../components/recommend/play_list.vue'
+	import onlyList from '../components/recommend/only_list.vue'
+	import newList from '../components/recommend/new_list.vue'
+	import mvList from '../components/recommend/mv_list.vue'
+	import djList from '../components/recommend/dj_list.vue'
 	export default{
 		components:{
 			slideBar,
 			recommendPerson,
-			recommendItem
+      playList,
+      onlyList,
+      newList,
+      mvList,
+      djList
 		},
 		data(){
 			return{
@@ -52,8 +60,8 @@
 				})
 			},
 			getSongList(){
-				this.$http.get('/api/recommend/resource').then((response)=>{
-					this.songList=response.body.recommend;
+				this.$http.get('/api/personalized').then((response)=>{
+					this.songList=response.body.result;
 				})
 			},
 			getExclusive(){

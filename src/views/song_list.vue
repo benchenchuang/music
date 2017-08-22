@@ -19,24 +19,24 @@
 		</div>
 
 		<div v-if="is_new" v-infinite-scroll="getNewList" infinite-scroll-distance="100">
-			<keep-alive><recommend-item :title="''" :look='2' :data="newList" :count='false'></recommend-item></keep-alive>
+			<keep-alive><play-list :title="''" :type="'playlist'" :look='2' :data="newList"></play-list></keep-alive>
 			<loader v-if="is_loading"></loader>
 		</div>
 		<div v-if="!is_new" v-infinite-scroll="getHotList" infinite-scroll-distance="100">
-			<keep-alive><recommend-item :title="''" :look='2' :data="hotList" :count='true' :shape="'music'"></recommend-item></keep-alive>
+			<keep-alive><play-list :title="''" :type="'playlist'" :look='2' :data="hotList" :count='true'></play-list></keep-alive>
 			<loader v-if="is_loading"></loader>
 		</div>
 	</div>
 </template>
 <script>
-	import recommendItem from '../components/recommend-item'
+	import playList from '../components/recommend/play_list'
 	import Vue from 'vue';
 	  //滚动
 	import infiniteScroll from 'vue-infinite-scroll'
 	Vue.use(infiniteScroll);
 	export default{
 		components:{
-			recommendItem
+      playList
 		},
 		data(){
 			return{
@@ -72,6 +72,7 @@
 					this.is_loading=false
 					this.newList=response.body.playlists;
 					this.new_count+=20;
+					console.log(response)
 				})
 			},
 			getHotList(){

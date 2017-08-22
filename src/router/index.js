@@ -13,9 +13,13 @@ const Friend=resolve => require(['@/views/my-friend'],resolve)
 const Mine=resolve => require(['@/views/mine'],resolve)
 const Login=resolve => require(['@/views/login'],resolve)
 
+//音乐列表
+const PlayList=resolve => require(['@/views/play_list'],resolve)
+const Album=resolve => require(['@/views/album_list'],resolve)
 
 
-Vue.use(Router)
+
+Vue.use(Router);
 
 export default new Router({
   routes: [
@@ -56,6 +60,14 @@ export default new Router({
       path:'/search',
       name:'search',
       component:Search
+    },{
+      path:'/playlist/:id',
+      name:'playlist',
+      component:PlayList
+    },{
+      path:'/album/:id',
+      name:'album',
+      component:Album
     }
   ]
 })

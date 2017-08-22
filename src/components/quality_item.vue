@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="quality_item" v-for="item in items">
+		<router-link tag="div" :to="{name:'playlist',params:{id:item.id}}" class="quality_item" v-for="item in items" :key="1">
 			<div class="avatar">
 				<img v-lazy="item.coverImgUrl" lazy="loading">
 				<i class="iconfont icon-huiyuan"></i>
@@ -11,7 +11,7 @@
 				<p>by {{item.creator.nickname}}</p>
 				<p><span class="tag">{{item.tag}}</span>{{item.copywriter}}</p>
 			</div>
-		</div>
+		</router-link>
 	</div>
 </template>
 <script>

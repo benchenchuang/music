@@ -11,10 +11,10 @@
 			</ul>
 		</div>
 		<div>
-			<keep-alive><recommend v-if="type==1"></recommend></keep-alive>
-			<keep-alive><song-list v-if="type==2"></song-list></keep-alive>
-			<keep-alive><recommend-fm v-if="type==3"></recommend-fm></keep-alive>
-			<keep-alive><ranks v-if="type==4"></ranks></keep-alive>
+			<recommend v-if="type==1"></recommend>
+			<song-list v-if="type==2"></song-list>
+			<recommend-fm v-if="type==3"></recommend-fm>
+			<ranks v-if="type==4"></ranks>
 		</div>
 	</div>
 </template>

@@ -12,15 +12,15 @@
 			</ul>
 		</div>
 		<loader v-if="official.length<4"></loader>
-		<recommend-item :title="'云音乐全球版'" :look='3' :data="globals" :count='false'></recommend-item>
+    <rank-list :title="'云音乐全球版'" :data="globals"></rank-list>
 		<loader v-if="globals.length<18"></loader>
 	</div>
 </template>
 <script>
-	import recommendItem from '../components/recommend-item'
+	import rankList from '../components/recommend/rank_list.vue'
 	export default{
 		components:{
-			recommendItem
+      rankList
 		},
 		data(){
 			return{
@@ -67,6 +67,7 @@
 			getGlobal(value){
 				this.$http.get('/api/top/list?idx='+value).then((response)=>{
 					this.globals.push(response.body.result);
+					console.log(response)
 				})
 			}
 		}
