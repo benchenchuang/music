@@ -110,7 +110,7 @@
         music.play();
         this.setPlay= setInterval(()=>{
           if(this.song.dt<=music.currentTime*1000){
-            this.pause();
+            this.playNext();
             clearInterval(this.setPlay);
           }
         },1000)

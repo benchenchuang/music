@@ -46,7 +46,7 @@ export const store=new Vuex.Store({
     },
     playNext (state) { // 播放下一曲
       state.currentIndex++;
-      if (state.currentIndex > state.songList.length) {
+      if (state.currentIndex > state.songList.length-1) {
         state.currentIndex = 0;
       }
       state.audio = state.songList[state.currentIndex];
@@ -54,7 +54,7 @@ export const store=new Vuex.Store({
     playPrev (state) { // 播放上一曲
       state.currentIndex--;
       if (state.currentIndex < 0) {
-        state.currentIndex = state.songList.length;
+        state.currentIndex = state.songList.length-1;
       }
       state.audio = state.songList[state.currentIndex];
     },
