@@ -9,7 +9,8 @@ export const store=new Vuex.Store({
       is_play:false,
       songList:[],
       currentIndex:0,
-      music:''
+      music:'',
+      audio:[]
     },
   // getters:{
   //   doneList:state=>{
@@ -24,7 +25,12 @@ export const store=new Vuex.Store({
       state.currentIndex=0;
       state.music_panel=true;
       state.songList=songs;
+      state.audio=songs[state.currentIndex];
       state.workman=true;
+    },
+    currentIndex (state, index) {
+      state.audio = state.songList[index];
+      state.currentIndex = index;
     },
     showPanel(state){
       state.music_panel=true
@@ -37,6 +43,20 @@ export const store=new Vuex.Store({
     },
     pause(state){
       state.is_play=false
-    }
+    },
+    playNext (state) { // 播放下一曲
+      state.currentIndex++;
+      if (state.currentIndex > state.songList.length) {
+        state.currentIndex = 0;
+      }
+      state.audio = state.songList[state.currentIndex];
+    },
+    playPrev (state) { // 播放上一曲
+      state.currentIndex--;
+      if (state.currentIndex < 0) {
+        state.currentIndex = state.songList.length;
+      }
+      state.audio = state.songList[state.currentIndex];
+    },
   }
 });

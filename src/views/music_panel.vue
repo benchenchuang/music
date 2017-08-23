@@ -22,17 +22,19 @@
       <div class="play_control">
         <ul class="flex-box">
           <li class="flex-item"><i class="iconfont icon-love"></i></li>
-          <li class="flex-item"><i class="iconfont icon-prevvideo"></i></li>
+          <li class="flex-item" @click='playPrev'><i class="iconfont icon-prevvideo"></i></li>
           <li class="flex-item big"><i class="iconfont icon-play_music" v-if="!is_play" @click="play"></i><i class="iconfont icon-pause" v-else @click="pause"></i> </li>
-          <li class="flex-item"><i class="iconfont icon-nextvideo"></i></li>
+          <li class="flex-item" @click='playNext'><i class="iconfont icon-nextvideo"></i></li>
           <li class="flex-item" @click="play_list=true"><i class="iconfont icon-duoxuan"></i></li>
         </ul>
       </div>
       <audio :src="music" id="music"></audio>
       <div class="play_wrap" v-show="play_list">
-        <i class="iconfont icon-del" @click="play_list=false"></i>
+        <div class="play_set">
+          <i class="iconfont fr icon-del" @click="play_list=false"></i>
+        </div>
         <ul>
-          <li v-for="song in songs" @click="playMusic(song.id)">{{song.name}}</li>
+          <li class="cut_txt" v-for="(song,index) in songs" @click="playMusic(song.id,index)" :class="{on:currentIndex==index}">{{index+1}} - {{song.name}} -- {{song.ar[0].name}}</li>
         </ul>
       </div>
     </div>
@@ -58,24 +60,37 @@
         },
         currentIndex(){
           return this.$store.state.currentIndex
+        },
+        audio(){
+          return this.$store.state.audio
         }
     },
+    watch:{
+      audio(){
+        this.getMusic(this.audio.id);
+        this.getSongs(this.audio.id);
+        this.play();
+      },
+      currentIndex(){
+          return this.$store.state.currentIndex
+      }
+    },
     mounted(){
-      console.log(this.songs);
-      this.getMusic(this.songs[0].id);
-      this.getSongs(this.songs[0].id);
-      this.play();
+      // console.log(this.audio);
+      this.getMusic(this.audio.id);
+      this.getSongs(this.audio.id);
+      var music=document.getElementById('music');
+      music.play();
     },
     methods:{
-      playMusic(id){
+      playMusic(id,index){
+        this.$store.commit('currentIndex',index)
         this.play_list=false;
         this.getMusic(id);
         this.getSongs(id);
-        console.log(this.play_list)
       },
       getMusic(id){
         this.$http.get('/api/music/url?id='+id).then(response=>{
-          this.pause();
           this.music=response.body.data[0].url;
           setTimeout(()=>{
             this.play();
@@ -85,6 +100,7 @@
       getSongs(id){
         this.$http.get('/api/song/detail?ids='+id).then(response=>{
           this.song=response.body.songs[0];
+          console.log(response)
         })
       },
       play(){
@@ -104,7 +120,9 @@
         document.getElementById('music').pause()
       },
       ...mapMutations([
-        'hidePanel'
+        'hidePanel',
+        'playNext',
+        'playPrev'
       ])
     }
   }
@@ -121,27 +139,28 @@
   .music_info p{
     font-size: 14px;
   }
-  .play_wrap .icon-del{
-    position: absolute;
-    right:20px;
-    top:10px;
-    color: #999;
-    z-index: 99;
-  }
   .play_wrap{
-    padding-top: 20px;
     position: absolute;
     width:100%;
     left:0;
     bottom: 0;
     background: #fff;
+    z-index: 999;
+  }
+  .play_set{
+    padding:0 20px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    color: #474747;
+    background: #f5f5f5;
+    box-sizing: border-box;
   }
   .play_wrap ul{
-    margin-top: 20px;
     width: 100%;
     height:300px;
     z-index: 9999;
-    padding:20px;
+    padding:0 20px;
     overflow-y: scroll;
     box-sizing: border-box;
   }
@@ -151,6 +170,9 @@
     font-size: 14px;
     color: #666;
     border-bottom: 1px solid #f1f1f1;
+  }
+  .play_wrap li.on{
+    color: #d43c33
   }
   .play_control{
     position: absolute;
