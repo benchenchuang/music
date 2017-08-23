@@ -3,7 +3,9 @@
 > Vue仿网易云音乐app
 
 
-<br/>非常感谢 Binaryify 的关于api的提供 https://binaryify.github.io/NeteaseCloudMusicApi/#/
+<br/>非常感谢 Binaryify 的关于api的提供 https://binaryify.github.io/NeteaseCloudMusicApi/#/  <br/>
+本项目还没完工！做到播放这一块，还有bug待修复<br/>
+
 <img src="./src/assets/music/home-recom.png"/>
 <img src="./src/assets/music/home-recom2.png"/>
 <img src="./src/assets/music/home-recom3.png"/>
