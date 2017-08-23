@@ -26,7 +26,7 @@ Vue.use(VueLazyload, {
   loading: require('./assets/images/loading.png'),
   attempt: 3
 });
-
+import {store} from './vuex/index'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.use(VueAwesomeSwiper)
 
@@ -39,6 +39,7 @@ Vue.component('loader', PulseLoader)
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
-})
+});

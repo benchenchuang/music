@@ -1,11 +1,16 @@
 <template>
-	<div class="play_music">
+	<div class="play_music" @click="showPanel">
 		<i class="iconfont icon-music"></i>
 	</div>
 </template>
 <script>
 	export default{
-		name:'musicing'
+		name:'musicing',
+    methods:{
+      showPanel(){
+        this.$store.commit('showPanel')
+      }
+    }
 	}
 </script>
 <style scoped>

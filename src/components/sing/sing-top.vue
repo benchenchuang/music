@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="top">
-      <song-head :title="'歌单'" :back="true" :play="true" :bg="true"></song-head>
+      <song-head :title="'歌单'" :back="true" :play="true" :bg="bg"></song-head>
       <div class="fix_top">
         <img v-lazy="data.coverImgUrl">
       </div>
@@ -18,6 +18,7 @@
           </div>
         </div>
       </div>
+      <top-count :info="data"></top-count>
       <img class="top_bg" v-lazy="data.coverImgUrl">
 
       <div></div>
@@ -31,16 +32,22 @@
 <script>
   import songHead from '../header'
   import coverMask from './cover'
+  import topCount from './top_count'
   export  default {
     props:['data'],
     components:{
       songHead,
-      coverMask
+      coverMask,
+      topCount
     },
     data(){
       return{
-        mask:false
+        mask:false,
+        bg:true
       }
+    },
+    mounted(){
+      window.addEventListener('scroll', this.needToTop);
     },
     methods:{
       cancel_mask(){
@@ -48,6 +55,14 @@
       },
       showDesc(){
         this.mask=true;
+      },
+      needToTop(){
+        var curHeight = document.documentElement.scrollTop || document.body.scrollTop;
+        if(curHeight>=190){
+          this.bg=false
+        }else{
+          this.bg=true
+        }
       }
     }
 

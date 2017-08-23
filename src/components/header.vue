@@ -4,7 +4,7 @@
 			<i v-if='back' @click='goBack()' class="iconfont icon-left"></i>
 			<h3>{{title}}</h3>
 			<!-- 是否需要显示播放 -->
-			<i v-if='play' class="iconfont icon-music"></i>
+			<i v-if='play' @click="showPanel" class="iconfont icon-music"></i>
 		</div>
 	</div>
 </template>
@@ -14,7 +14,10 @@
 		methods:{
 			goBack(){
 				window.history.back();
-			}
+			},
+      showPanel(){
+			  this.$store.commit('showPanel')
+      }
 		}
 	}
 </script>

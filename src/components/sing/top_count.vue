@@ -1,9 +1,9 @@
 <template>
   <div class="top_count">
       <ul class="flex-box">
-        <li class="flex-item">
+        <li class="flex-item" v-if="info.likedCount">
           <i class="iconfont icon-tianjiawenjian"></i>
-          <p>{{info.resourceType}}</p>
+          <p>{{info.likedCount}}</p>
         </li>
         <li class="flex-item">
           <i class="iconfont icon-liuyan"></i>
