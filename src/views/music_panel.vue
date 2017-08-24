@@ -31,13 +31,11 @@
       <audio :src="music" id="music"></audio>
       <div class="play_mask" v-show="play_list">
         <div class="play_wrap">
-          <div class="play_set">
-            <i class="iconfont fr icon-del" @click="play_list=false"></i>
-          </div>
           <ul>
             <li class="cut_txt" v-for="(song,index) in songs" @click="playMusic(song.id,index)" :key='index' :class="{on:currentIndex==index}">{{index+1}} - {{song.name}} -- {{song.ar[0].name}}</li>
           </ul>
         </div>
+        <div class="mask" @click="play_list=false"></div>
       </div>
     </div>
   </div>
@@ -114,8 +112,6 @@
         music.play();
         clearInterval(this.getPlay);
         this.getPlay=setInterval(()=>{
-            console.log(Math.ceil(music.currentTime)*1000)
-            console.log(this.song.dt)
             if(this.song.dt<=Math.ceil(music.currentTime)*1000){
               this.playNext();
               clearInterval(this.getPlay);
@@ -136,6 +132,22 @@
   }
 </script>
 <style scoped>
+  .play_mask{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+  }
+  .play_mask .mask{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background:rgba(0,0,0,.5);
+  }
   .music_info{
     margin-top: 20px;
     position: relative;
