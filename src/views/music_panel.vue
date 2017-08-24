@@ -122,10 +122,30 @@
         this.$store.commit('pause');
         document.getElementById('music').pause()
       },
+      playNext(){
+        this.$store.commit('playNext')
+        if(this.type==3){
+          console.log(this.currentIndex);
+          console.log(this.songs.length-1)
+          if (this.currentIndex == this.songs.length-1) {
+            this.pause();
+          }
+        }
+      },
+      playPrev(){
+        this.$store.commit('playPrev')
+        if(this.type==3){
+          console.log(this.currentIndex);
+          console.log(this.songs.length-1)
+          if (this.currentIndex ==0) {
+            this.pause();
+          }
+        }
+      },
       ...mapMutations([
         'hidePanel',
-        'playNext',
-        'playPrev',
+        // 'playNext',
+        // 'playPrev',
         'currentType'
       ])
     }

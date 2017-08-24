@@ -5,7 +5,6 @@
       <div v-show="panel">
         <music-panel></music-panel>
       </div>
-      <loader v-show="!this.songs.length"></loader>
     </div>
   </div>
 </template>

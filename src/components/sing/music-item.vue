@@ -1,6 +1,6 @@
 <template>
   <div class="list_item">
-      <div v-for="(item , index) in items" :key="1">
+      <div v-for="(item , index) in items" :key="index" @click='addPlay(items)'>
         <span class="index">{{index+1}}</span>
         <div class="cont">
           <h3>{{item.name}}</h3>
@@ -11,7 +11,13 @@
 </template>
 <script>
   export default {
-    props:['items']
+    props:['items'],
+    methods:{
+      addPlay(item){
+        console.log(item)
+        this.$store.commit('addList',item);
+      },
+    }
   }
 </script>
 <style scoped>

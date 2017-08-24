@@ -51,7 +51,7 @@
           this.albums=response.body.album;
           this.songs=response.body.songs;
           this.is_top=true;
-          console.log(response)
+          console.log(this.songs)
         });
       }
     }

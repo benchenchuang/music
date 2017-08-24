@@ -36,6 +36,13 @@ export const store=new Vuex.Store({
       state.audio=songs[state.currentIndex];
       state.workman=true;
     },
+    addMusic(state,song){
+      state.currentIndex=0;
+      state.music_panel=true;
+      state.songList=song;
+      state.audio=song;
+      state.workman=true;
+    },
     currentIndex (state, index) {
       state.audio = state.songList[index];
       state.currentIndex = index;
@@ -56,13 +63,16 @@ export const store=new Vuex.Store({
       if(state.type==2){
         state.currentIndex = Math.round(Math.random()*(state.songList.length-1));
       }else if(state.type==3){
-        if (state.currentIndex > state.songList.length-1) {
+        state.currentIndex++;
+        if (state.currentIndex >= state.songList.length-1) {
           state.currentIndex = state.songList.length-1;
+          state.is_play=false
         }
-      }
-      state.currentIndex++;
-      if (state.currentIndex > state.songList.length-1) {
-        state.currentIndex = 0;
+      }else{
+        state.currentIndex++;
+        if (state.currentIndex > state.songList.length-1) {
+          state.currentIndex = 0;
+        }
       }
       state.audio = state.songList[state.currentIndex];
     },
@@ -70,15 +80,19 @@ export const store=new Vuex.Store({
       if(state.type==2){
         state.currentIndex = Math.round(Math.random()*(state.songList.length-1));
       }else if(state.type==3){
+        state.currentIndex--;
+        if (state.currentIndex <= 0) {
+          state.currentIndex =0;
+          state.is_play=false
+        }
+      }else{
+        state.currentIndex--;
         if (state.currentIndex < 0) {
-          state.currentIndex =1;
+          state.currentIndex = state.songList.length-1;
         }
       }
-      state.currentIndex--;
-      if (state.currentIndex < 0) {
-        state.currentIndex = state.songList.length-1;
-      }
       state.audio = state.songList[state.currentIndex];
+      
     },
   }
 });
