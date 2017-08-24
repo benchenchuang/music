@@ -11,11 +11,19 @@
 <script>
 	export default{
 		props:['title','play','back','bg'],
+		computed:{
+			songs(){
+        return this.$store.state.songList
+      }
+		},
 		methods:{
 			goBack(){
 				window.history.back();
 			},
       showPanel(){
+				if(!this.songs.length){
+						return this.$toast.center('未添加音乐');
+				}
 			  this.$store.commit('showPanel')
       }
 		}

@@ -110,13 +110,12 @@ a,button,input,textarea,select{
     margin:15px 0;
   }
 /*icons*/
-
 @font-face {font-family: "iconfont";
-  src: url('http://at.alicdn.com/t/font_387655_us978d397nbz9f6r.eot?t=1503029479458'); /* IE9*/
-  src: url('http://at.alicdn.com/t/font_387655_us978d397nbz9f6r.eot?t=1503029479458#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('http://at.alicdn.com/t/font_387655_us978d397nbz9f6r.woff?t=1503029479458') format('woff'), /* chrome, firefox */
-  url('http://at.alicdn.com/t/font_387655_us978d397nbz9f6r.ttf?t=1503029479458') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('http://at.alicdn.com/t/font_387655_us978d397nbz9f6r.svg?t=1503029479458#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('http://at.alicdn.com/t/font_387655_cdwnnb44ra8rrudi.eot?t=1503533726781'); /* IE9*/
+  src: url('http://at.alicdn.com/t/font_387655_cdwnnb44ra8rrudi.eot?t=1503533726781#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('http://at.alicdn.com/t/font_387655_cdwnnb44ra8rrudi.woff?t=1503533726781') format('woff'), /* chrome, firefox */
+  url('http://at.alicdn.com/t/font_387655_cdwnnb44ra8rrudi.ttf?t=1503533726781') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('http://at.alicdn.com/t/font_387655_cdwnnb44ra8rrudi.svg?t=1503533726781#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -136,6 +135,8 @@ a,button,input,textarea,select{
 .icon-center:before { content: "\e60a"; }
 
 .icon-share:before { content: "\e7e8"; }
+
+.icon-suijibofang:before { content: "\e6f1"; }
 
 .icon-fm:before { content: "\e6f4"; }
 
@@ -191,7 +192,11 @@ a,button,input,textarea,select{
 
 .icon-prevvideo:before { content: "\e668"; }
 
+.icon-xunhuan:before { content: "\e6ab"; }
+
 .icon-play:before { content: "\e73c"; }
+
+.icon-yinpindanquxunhuan:before { content: "\e684"; }
 
 .icon-load:before { content: "\e65b"; }
 
@@ -220,4 +225,3 @@ a,button,input,textarea,select{
 .icon-duoxuan:before { content: "\e677"; }
 
 .icon-free:before { content: "\e611"; }
-

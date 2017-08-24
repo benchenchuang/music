@@ -5,6 +5,7 @@
       <div v-show="panel">
         <music-panel></music-panel>
       </div>
+      <loader v-show="!this.songs.length"></loader>
     </div>
   </div>
 </template>
@@ -22,6 +23,9 @@
       },
       workman(){
         return this.$store.state.workman
+      },
+      songs(){
+        return this.$store.state.songList
       }
     }
   }

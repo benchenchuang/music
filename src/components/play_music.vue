@@ -6,8 +6,16 @@
 <script>
 	export default{
 		name:'musicing',
+		computed:{
+			songs(){
+        return this.$store.state.songList
+      }
+		},
     methods:{
       showPanel(){
+				if(!this.songs.length){
+						return this.$toast.center('未添加音乐');
+				}
         this.$store.commit('showPanel')
       }
     }

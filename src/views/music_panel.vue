@@ -2,7 +2,7 @@
   <div class="wrap">
     <div class="music_wrap">
       <i class="iconfont icon-del" @click="hidePanel"></i>
-      <div class="music_bg" :style="'background:url('+song.al.picUrl+');opacity: 1;'">
+      <div class="music_bg" v-lazy:background-image.container="song.al.picUrl">
       </div>
       <div class="song_box">
         <div class="song_disc" :class="{needle:!is_play}">
@@ -21,7 +21,7 @@
 
       <div class="play_control">
         <ul class="flex-box">
-          <li class="flex-item"><i class="iconfont icon-love"></i></li>
+          <li class="flex-item" @click='currentType'><i class="iconfont" :class="{'icon-xunhuan':type==1,'icon-suijibofang':type==2,'icon-yinpindanquxunhuan':type==3}"></i></li>
           <li class="flex-item" @click='playPrev'><i class="iconfont icon-prevvideo"></i></li>
           <li class="flex-item big"><i class="iconfont icon-play_music" v-if="!is_play" @click="play"></i><i class="iconfont icon-pause" v-else @click="pause"></i> </li>
           <li class="flex-item" @click='playNext'><i class="iconfont icon-nextvideo"></i></li>
@@ -29,13 +29,15 @@
         </ul>
       </div>
       <audio :src="music" id="music"></audio>
-      <div class="play_wrap" v-show="play_list">
-        <div class="play_set">
-          <i class="iconfont fr icon-del" @click="play_list=false"></i>
+      <div class="play_mask" v-show="play_list">
+        <div class="play_wrap">
+          <div class="play_set">
+            <i class="iconfont fr icon-del" @click="play_list=false"></i>
+          </div>
+          <ul>
+            <li class="cut_txt" v-for="(song,index) in songs" @click="playMusic(song.id,index)" :key='index' :class="{on:currentIndex==index}">{{index+1}} - {{song.name}} -- {{song.ar[0].name}}</li>
+          </ul>
         </div>
-        <ul>
-          <li class="cut_txt" v-for="(song,index) in songs" @click="playMusic(song.id,index)" :class="{on:currentIndex==index}">{{index+1}} - {{song.name}} -- {{song.ar[0].name}}</li>
-        </ul>
       </div>
     </div>
   </div>
@@ -48,10 +50,14 @@
         song:[],
         music:'',
         play_list:false,
-        setPlay:''
+        setPlay:'',
+        getPlay:null
       }
     },
     computed:{
+       type(){
+            return this.$store.state.type
+        },
         is_play(){
           return this.$store.state.is_play
         },
@@ -79,8 +85,7 @@
       // console.log(this.audio);
       this.getMusic(this.audio.id);
       this.getSongs(this.audio.id);
-      var music=document.getElementById('music');
-      music.play();
+      this.play();
     },
     methods:{
       playMusic(id,index){
@@ -100,7 +105,6 @@
       getSongs(id){
         this.$http.get('/api/song/detail?ids='+id).then(response=>{
           this.song=response.body.songs[0];
-          console.log(response)
         })
       },
       play(){
@@ -108,11 +112,14 @@
         this.$store.commit('play');
         var music=document.getElementById('music');
         music.play();
-        this.setPlay= setInterval(()=>{
-          if(this.song.dt<=music.currentTime*1000){
-            this.playNext();
-            clearInterval(this.setPlay);
-          }
+        clearInterval(this.getPlay);
+        this.getPlay=setInterval(()=>{
+            console.log(Math.ceil(music.currentTime)*1000)
+            console.log(this.song.dt)
+            if(this.song.dt<=Math.ceil(music.currentTime)*1000){
+              this.playNext();
+              clearInterval(this.getPlay);
+            }
         },1000)
       },
       pause(){
@@ -122,7 +129,8 @@
       ...mapMutations([
         'hidePanel',
         'playNext',
-        'playPrev'
+        'playPrev',
+        'currentType'
       ])
     }
   }
